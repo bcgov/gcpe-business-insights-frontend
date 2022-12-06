@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import Container from 'react-bootstrap/Container';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import ApiProvider from "./contexts/ApiProvider";
+import Header from './components/Header';
+import ExplorePage from './pages/ExplorePage';
+import UserPage from "./pages/UserPage";
+import LoginPage from './pages/LoginPage';
+import TranslationsPage from './pages/TranslationsPage';
+import RegistrationPage from "./pages/RegistrationPage";
+import FlashProvider from "./contexts/FlashProvider";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container fluid className="App">
+      <BrowserRouter>
+        <FlashProvider>
+          <ApiProvider>
+            <Header />
+            <Routes>
+              <Route path="/" element={<TranslationsPage />} />
+              <Route path="/explore" element={<ExplorePage />} />
+              <Route path="/user/:username" element={<UserPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegistrationPage />} />
+              <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+          </ApiProvider>
+        </FlashProvider>
+      </BrowserRouter>
+    </Container>
   );
 }
-
-export default App;
