@@ -1,7 +1,12 @@
+import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+
 export default function Header() {
   return (
-    <div>
-        <p>GCPE Business Insights</p>
-    </div>
+    <Navbar bg="light" sticky="top" className="Header">
+      <Container>
+        <Navbar.Brand>GCPE Business Insights</Navbar.Brand>
+      </Container>
+    </Navbar>
   );
 }
