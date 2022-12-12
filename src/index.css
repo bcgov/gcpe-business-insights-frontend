@@ -1,3 +1,27 @@
+@font-face {
+  font-family: 'BCSans-Bold';
+  src: local('BCSans-Bold'), url(./fonts/BCSans-Bold.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'BCSans-BoldItalic';
+  src: local('BCSans-BoldItalic'), url(./fonts/BCSans-BoldItalic.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'BCSans-Italic';
+  src: local('BCSans-Italic'), url(./fonts/BCSans-Italic.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'BCSans-Regular';
+  src: local('BCSans-Regular'), url(./fonts/BCSans-Regular.woff) format('woff');
+}
+
+body {
+  font-family: BCSans-Regular;
+}
+
 .App {
   padding: 0;
 }
@@ -7,14 +31,18 @@
 }
 
 .Header {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 2px solid #fcba19;
+}
+
+.logo {
+  height: 70px;
 }
 
 .Sidebar {
   width: 120px;
   margin: 5px;
   position: sticky;
-  top: 62px;
+  top: 100px;
   align-self: flex-start;
   align-items: start;
 }

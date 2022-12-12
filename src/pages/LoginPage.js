@@ -3,6 +3,7 @@ import Body from "../components/Body";
 import {useNavigate, useLocation } from "react-router-dom";
 import { useIsAuthenticated } from "@azure/msal-react";
 import { SignInButton } from "../components/SignInButton";
+import Accordion from "react-bootstrap/Accordion";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -21,7 +22,14 @@ export default function LoginPage() {
 
   return (
     <Body>
-      {isAuthenticated ? <></> : <SignInButton />}
+      <Accordion className='mt-5' defaultActiveKey={["0"]} alwaysOpen>
+        <Accordion.Item eventKey="0">
+          <Accordion.Header>Log in to GCPE Business Insights</Accordion.Header>
+          <Accordion.Body>
+            {isAuthenticated ? <></> : <SignInButton />}
+          </Accordion.Body>
+        </Accordion.Item>
+      </Accordion>
     </Body>
   );
 }
