@@ -1,3 +1,6 @@
+import { PublicClientApplication } from "@azure/msal-browser";
+import { msalConfig } from "./authConfig";
+
 const BASE_API_URL = process.env.REACT_APP_BASE_API_URL;
 
 export default class BusinessInsightsApiClient {
@@ -6,6 +9,20 @@ export default class BusinessInsightsApiClient {
   }
 
   async request(options) {
+    const publicClientApplication = new PublicClientApplication(msalConfig);
+
+    const account = publicClientApplication.getAllAccounts()[0];
+    const accessTokenRequest = {
+      scopes: ["api://cc1edab2-70be-473b-8793-f51fca418d05/user_impersonation"],
+      account: account,
+    };
+
+    var acquiredToken = await publicClientApplication.acquireTokenSilent(
+      accessTokenRequest
+    );
+
+    var accessToken = acquiredToken.accessToken;
+
     let query = new URLSearchParams(options.query || {}).toString();
     if (query !== "") {
       query = "?" + query;
@@ -17,6 +34,7 @@ export default class BusinessInsightsApiClient {
         method: options.method,
         headers: {
           "Content-Type": "application/json",
+          Authorization: "Bearer " + accessToken,
           ...options.headers,
         },
         body: options.body ? JSON.stringify(options.body) : null,

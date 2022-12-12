@@ -2,6 +2,10 @@
   padding: 0;
 }
 
+.nav-bg {
+  background-color: rgb(53, 89, 146);
+}
+
 .Header {
   border-bottom: 1px solid #ddd;
 }

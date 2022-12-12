@@ -9,10 +9,7 @@ export default function Sidebar() {
         <Nav.Link as={NavLink} to="/" end>Translations</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link as={NavLink} to="/test1">Another Report</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link as={NavLink} to="/test2">Another Report</Nav.Link>
+        <Nav.Link as={NavLink} to="/rollup">Rollup</Nav.Link>
       </Nav.Item>
     </Navbar>
   );
