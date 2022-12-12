@@ -1,64 +1,27 @@
-import { useState, useEffect, useRef } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import { useEffect } from "react";
 import Body from "../components/Body";
-import InputField from "../components/InputField";
-import { Link } from "react-router-dom";
+import {useNavigate, useLocation } from "react-router-dom";
+import { useIsAuthenticated } from "@azure/msal-react";
+import { SignInButton } from "../components/SignInButton";
 
 export default function LoginPage() {
-  const [formErrors, setFormErrors] = useState({});
-  const usernameField = useRef();
-  const passwordField = useRef();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isAuthenticated = useIsAuthenticated();
 
   useEffect(() => {
-    usernameField.current.focus();
-  }, []);
-
-   const onSubmit = (ev) => {
-     ev.preventDefault();
-     const username = usernameField.current.value;
-     const password = passwordField.current.value;
-
-     const errors = {};
-     if (!username) {
-       errors.username = "Username must not be empty.";
-     }
-     if (!password) {
-       errors.password = "Password must not be empty.";
-     }
-     setFormErrors(errors);
-     if (Object.keys(errors).length > 0) {
-       return;
-     }
-
-     // TODO: log the user in
-   };
+    if(isAuthenticated) {
+      let next = "/";
+      if (location.state && location.state.next) {
+        next = location.state.next;
+      }
+      navigate(next);
+    }
+  }, [isAuthenticated, location.state, navigate]);
 
   return (
     <Body>
-      <h1>Login</h1>
-      <Form onSubmit={onSubmit}>
-        <InputField
-          name="username"
-          label="Username or email address"
-          error={formErrors.username}
-          fieldRef={usernameField}
-        />
-        <InputField
-          name="password"
-          label="Password"
-          type="password"
-          error={formErrors.password}
-          fieldRef={passwordField}
-        />
-        <Button variant="primary" type="submit">
-          Login
-        </Button>
-      </Form>
-      <hr />
-      <p>
-        Don&apos;t have an account? <Link to="/register">Register here</Link>!
-      </p>
+      {isAuthenticated ? <></> : <SignInButton />}
     </Body>
   );
 }
