@@ -35,7 +35,7 @@ body {
 }
 
 .logo {
-  height: 70px;
+  height: 80px;
 }
 
 .Sidebar {
@@ -45,6 +45,8 @@ body {
   top: 100px;
   align-self: flex-start;
   align-items: start;
+  font-size: 18px;
+  margin-right: 20px;
 }
 
 .Sidebar .nav-item {
@@ -70,4 +72,16 @@ body {
 .InputField {
   margin-top: 15px;
   margin-bottom: 15px;
+}
+
+th {
+  font-size: 18px;
+}
+
+.centerTd {
+  text-align: center;
+}
+
+.noBorder {
+  border: none;
 }

@@ -5,7 +5,7 @@ import FlashMessage from "./FlashMessage";
 
 export default function Body({ sidebar, children }) {
   return (
-    <Container>
+    <Container className='mt-3'>
       <Stack direction="horizontal" className="Body">
         {sidebar && <Sidebar />}
         <Container className="Content">

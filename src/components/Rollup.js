@@ -32,16 +32,51 @@ export default function Rollup() {
       <div style={{ marginBottom: 50 }}>
         <h1>Rollup</h1>
         <p>
-          {monthlyNewsReleaseVolume} releases translated
+          <strong>{monthlyNewsReleaseVolume}</strong> releases translated
           <br />
-          {translationsVolumeByMonth} documents translated
+          <strong>{translationsVolumeByMonth}</strong> documents translated
         </p>
       </div>
       {releasesTranslatedByMinistry === undefined ? (
         <Spinner animation="border" />
       ) : (
         <>
-          <h2>News Releases By Ministry</h2>
+          {languageCounts === null ? (
+            <p>Could not retrieve languages.</p>
+          ) : (
+            <>
+              <h2>Translations by Language</h2>
+              {languageCounts.length === 0 ? (
+                <p>There are no language counts.</p>
+              ) : (
+                <Table striped bordered>
+                  <thead>
+                    <tr>
+                      <th>Language</th>
+                      <th className="centerTd">Count</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {languageCounts.map((item, index) => {
+                      return (
+                        <tr key={item.language}>
+                          <td>{item.language}</td>
+                          <td className="centerTd">{item.count}</td>
+                        </tr>
+                      );
+                    })}
+                    <tr>
+                      <td></td>
+                      <td className="centerTd">
+                        <strong>Total {translationsVolumeByMonth}</strong>
+                      </td>
+                    </tr>
+                  </tbody>
+                </Table>
+              )}
+            </>
+          )}
+          <h2 style={{ marginTop: 50 }}>News Releases By Ministry</h2>
           {releasesTranslatedByMinistry === null ? (
             <p>Could not retrieve news releases by ministry.</p>
           ) : (
@@ -53,7 +88,7 @@ export default function Rollup() {
                   <thead>
                     <tr>
                       <th>Ministry</th>
-                      <th>Count</th>
+                      <th className="centerTd">Count</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -61,36 +96,7 @@ export default function Rollup() {
                       return (
                         <tr key={item.ministry}>
                           <td>{item.ministry}</td>
-                          <td>{item.count}</td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </Table>
-              )}
-            </>
-          )}
-          {languageCounts === null ? (
-            <p>Could not retrieve languages.</p>
-          ) : (
-            <>
-              <h2 style={{ marginTop: 50 }}>Totals by Language</h2>
-              {languageCounts.length === 0 ? (
-                <p>There are no language counts.</p>
-              ) : (
-                <Table striped bordered>
-                  <thead>
-                    <tr>
-                      <th>Language</th>
-                      <th>Count</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {languageCounts.map((item, index) => {
-                      return (
-                        <tr key={item.language}>
-                          <td>{item.language}</td>
-                          <td>{item.count}</td>
+                          <td className="centerTd">{item.count}</td>
                         </tr>
                       );
                     })}
