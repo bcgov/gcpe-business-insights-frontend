@@ -3,7 +3,7 @@ import Spinner from "react-bootstrap/Spinner";
 import Table from "react-bootstrap/Table";
 import { useApi } from "../contexts/ApiProvider";
 
-export default function Translations() {
+export default function Translations({start, end}) {
   const [translations, setTranslations] = useState();
   const [monthlyNewsReleaseVolume, setMonthlyNewsReleaseVolume] = useState();
   const [translationsVolumeByMonth, setTranslationsVolumeByMonth] = useState();
@@ -15,7 +15,8 @@ export default function Translations() {
 
   useEffect(() => {
     (async () => {
-      const response = await api.get("/posts/translations");
+      var url = start && end ? `/posts/translations/custom?startDate=${start}&endDate=${end}` : "/posts/translations";
+      const response = await api.get(url);
       if (response.ok) {
         const results = await response.body;
         setTranslations(results.translations);
@@ -30,7 +31,7 @@ export default function Translations() {
         setLanguageCounts(null);
       }
     })();
-  }, [api]);
+  }, [start, end, api]);
 
   return (
     <>

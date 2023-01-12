@@ -8,6 +8,7 @@ import LoginPage from './pages/LoginPage';
 import TranslationsPage from './pages/TranslationsPage';
 import RollupPage from "./pages/RollupPage";
 import RegistrationPage from "./pages/RegistrationPage";
+import HistoryPage from "./pages/HistoryPage";
 import FlashProvider from "./contexts/FlashProvider";
 import UserProvider from './contexts/UserProvider';
 import PrivateRoute from "./components/PrivateRoute";
@@ -36,6 +37,7 @@ export default function App() {
                     <PrivateRoute>
                       <Routes>
                         <Route path="/" element={<TranslationsPage />} />
+                        <Route path="/history/:start/:end" element={<HistoryPage />} />
                         <Route path="/rollup" element={<RollupPage />} />
                         <Route path="/explore" element={<ExplorePage />} />
                         <Route path="/user/:username" element={<UserPage />} />
