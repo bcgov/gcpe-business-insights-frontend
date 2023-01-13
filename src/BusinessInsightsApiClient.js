@@ -9,19 +9,20 @@ export default class BusinessInsightsApiClient {
   }
 
   async request(options) {
-    const publicClientApplication = new PublicClientApplication(msalConfig);
+    // const publicClientApplication = new PublicClientApplication(msalConfig);
 
-    const account = publicClientApplication.getAllAccounts()[0];
-    const accessTokenRequest = {
-      scopes: ["api://cc1edab2-70be-473b-8793-f51fca418d05/user_impersonation"],
-      account: account,
-    };
+    // const account = publicClientApplication.getAllAccounts()[0];
+    // const accessTokenRequest = {
+    //   scopes: ["api://cc1edab2-70be-473b-8793-f51fca418d05/user_impersonation"],
+    //   account: account,
+    // };
 
-    var acquiredToken = await publicClientApplication.acquireTokenSilent(
-      accessTokenRequest
-    );
+    // var acquiredToken = await publicClientApplication.acquireTokenSilent(
+    //   accessTokenRequest
+    // );
 
-    var accessToken = acquiredToken.accessToken;
+    // var accessToken = acquiredToken.accessToken;
+    var accessToken = "";
 
     let query = new URLSearchParams(options.query || {}).toString();
     if (query !== "") {

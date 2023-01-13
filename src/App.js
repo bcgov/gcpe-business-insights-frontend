@@ -35,22 +35,18 @@ export default function App() {
                   path="*"
                   element={
                     <PrivateRoute>
-                      <Routes>
-                        <Route path="/" element={<TranslationsPage />} />
-                        <Route path="/history/:start/:end" element={<HistoryPage />} />
-                        <Route path="/rollup" element={<RollupPage />} />
-                        <Route path="/explore" element={<ExplorePage />} />
-                        <Route path="/user/:username" element={<UserPage />} />
-                        <Route path="/login" element={<LoginPage />} />
-                        <Route
-                          path="/register"
-                          element={<RegistrationPage />}
-                        />
-                        <Route path="*" element={<Navigate to="/" />} />
-                      </Routes>
+                      <Routes></Routes>
                     </PrivateRoute>
                   }
                 />
+                <Route path="/" element={<TranslationsPage />} />
+                <Route path="/history/:start/:end" element={<HistoryPage />} />
+                <Route path="/rollup" element={<RollupPage />} />
+                <Route path="/explore" element={<ExplorePage />} />
+                <Route path="/user/:username" element={<UserPage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegistrationPage />} />
+                <Route path="*" element={<Navigate to="/" />} />
               </Routes>
             </UserProvider>
           </ApiProvider>
