@@ -9,7 +9,7 @@ export default function Sidebar() {
         <Nav.Link as={NavLink} to="/" end>Translations</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link as={NavLink} to="/history/2022-10-01/2022-11-01">History</Nav.Link>
+        <Nav.Link as={NavLink} to="/history-list">History List</Nav.Link>
       </Nav.Item>
       <Nav.Item>
         <Nav.Link as={NavLink} to="/rollup">Rollup</Nav.Link>
