@@ -3,7 +3,7 @@ import Rollup from "../components/Rollup";
 
 export default function RollupPage() {
   return (
-    <Body sidebar>
+    <Body seconaryNav>
       <Rollup />
     </Body>
   );

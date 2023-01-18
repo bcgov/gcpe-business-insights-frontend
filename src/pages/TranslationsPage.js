@@ -1,9 +1,9 @@
 import Body from "../components/Body";
-import Translations from '../components/Translations';
+import Translations from "../components/Translations";
 
 export default function TranslationsPage() {
   return (
-    <Body sidebar>
+    <Body seconaryNav>
       <Translations />
     </Body>
   );

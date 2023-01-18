@@ -35,6 +35,7 @@ body {
   /*border-bottom: 2px solid #fcba19;*/
   border-bottom: 1px solid #dee2e6;
   padding-bottom: 0;
+  background-color: #fff !important;
 }
 
 .navbar-brand {
@@ -91,4 +92,61 @@ th {
 
 .noBorder {
   border: none;
+}
+
+table thead {
+  background-color: #adcae2;
+  background-color: #38598a;
+  color: white;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+  --bs-table-accent-bg: #f0f3f6;
+  color: var(--bs-table-striped-color);
+}
+
+.roll-up-container {
+  display: flex;
+  flex-direction: row;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  gap: 1em;
+}
+
+.roll-up-container .flex-item {
+  /*width: calc(50% - 2em);*/
+  align-self: stretch;
+  flex: 1 1 auto;
+}
+
+.roll-up-container-3-table .flex-item:last-child {
+  width: 100%;
+}
+
+.secondary-nav {
+  display: flex;
+  flex-direction: row;
+  flex-flow: row wrap;
+  font-size: 1.2em;
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.secondary-nav li {
+  padding-right: 20px;
+  text-decoration: none;
+}
+
+.secondary-nav li a {
+  padding-bottom: 20px;
+}
+
+.secondary-nav li .active {
+  text-decoration: underline 2px #38598a;
+  text-underline-offset: 0.8em;
+}
+
+.table-outer-bordered {
+  border: 1px solid #dee2e6;
 }

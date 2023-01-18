@@ -1,18 +1,24 @@
 import Container from "react-bootstrap/Container";
-import Stack from "react-bootstrap/Stack";
-import Sidebar from "./Sidebar";
 import FlashMessage from "./FlashMessage";
+import SeconaryNav from "./SecondaryNav";
+import Sidebar from "./Sidebar";
+import Stack from "react-bootstrap/Stack";
 
-export default function Body({ sidebar, children }) {
+export default function Body({ seconaryNav, children }) {
   return (
-    <Container className='mt-3'>
-      <Stack direction="horizontal" className="Body">
+    <div className="mt-3 ms-3 me-3">
+      {/* <Stack direction="horizontal" className="Body">
         {sidebar && <Sidebar />}
-        <Container className="Content">
+        <div className="Content">
           <FlashMessage />
           {children}
-        </Container>
-      </Stack>
-    </Container>
+        </div>
+      </Stack>*/}
+      {seconaryNav && <SeconaryNav />}
+      <div className="Content">
+        <FlashMessage />
+        {children}
+      </div>
+    </div>
   );
 }

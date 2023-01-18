@@ -17,7 +17,7 @@ import UserProvider from "./contexts/UserProvider";
 
 export default function App() {
   return (
-    <Container fluid className="App">
+    <Container className="App">
       <BrowserRouter>
         <FlashProvider>
           <ApiProvider>

@@ -1,5 +1,7 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+
 import Spinner from "react-bootstrap/Spinner";
+import Stack from "react-bootstrap/Stack";
 import Table from "react-bootstrap/Table";
 import { useApi } from "../contexts/ApiProvider";
 
@@ -29,8 +31,8 @@ export default function Rollup() {
 
   return (
     <>
-      <div style={{ marginBottom: 50 }}>
-        <h1>Rollup</h1>
+      <div className="mb-3">
+        <h3>Rollup</h3>
         <p>
           <strong>{monthlyNewsReleaseVolume}</strong> releases translated
           <br />
@@ -41,70 +43,76 @@ export default function Rollup() {
         <Spinner animation="border" />
       ) : (
         <>
-          {languageCounts === null ? (
-            <p>Could not retrieve languages.</p>
-          ) : (
-            <>
-              <h2>Translations by Language</h2>
-              {languageCounts.length === 0 ? (
-                <p>There are no language counts.</p>
+          <div className="roll-up-container">
+            <div className="flex-item">
+              {languageCounts === null ? (
+                <p>Could not retrieve languages.</p>
               ) : (
-                <Table striped bordered>
-                  <thead>
-                    <tr>
-                      <th>Language</th>
-                      <th className="centerTd">Count</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {languageCounts.map((item, index) => {
-                      return (
-                        <tr key={item.language}>
-                          <td>{item.language}</td>
-                          <td className="centerTd">{item.count}</td>
+                <>
+                  <h4>Translations by Language</h4>
+                  {languageCounts.length === 0 ? (
+                    <p>There are no language counts.</p>
+                  ) : (
+                    <Table striped className="table-outer-bordered">
+                      <thead>
+                        <tr>
+                          <th>Language</th>
+                          <th className="centerTd">Count</th>
                         </tr>
-                      );
-                    })}
-                    <tr>
-                      <td></td>
-                      <td className="centerTd">
-                        <strong>Total {translationsVolumeByMonth}</strong>
-                      </td>
-                    </tr>
-                  </tbody>
-                </Table>
+                      </thead>
+                      <tbody>
+                        {languageCounts.map((item, index) => {
+                          return (
+                            <tr key={item.language}>
+                              <td>{item.language}</td>
+                              <td className="centerTd">{item.count}</td>
+                            </tr>
+                          );
+                        })}
+                        <tr>
+                          <td></td>
+                          <td className="centerTd">
+                            <strong>Total {translationsVolumeByMonth}</strong>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </Table>
+                  )}
+                </>
               )}
-            </>
-          )}
-          <h2 style={{ marginTop: 50 }}>News Releases By Ministry</h2>
-          {releasesTranslatedByMinistry === null ? (
-            <p>Could not retrieve news releases by ministry.</p>
-          ) : (
-            <>
-              {releasesTranslatedByMinistry.length === 0 ? (
-                <p>There are no translations by ministry.</p>
+            </div>
+            <div className="flex-item">
+              <h4>News Releases By Ministry</h4>
+              {releasesTranslatedByMinistry === null ? (
+                <p>Could not retrieve news releases by ministry.</p>
               ) : (
-                <Table striped bordered>
-                  <thead>
-                    <tr>
-                      <th>Ministry</th>
-                      <th className="centerTd">Count</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {releasesTranslatedByMinistry.map((item, index) => {
-                      return (
-                        <tr key={item.ministry}>
-                          <td>{item.ministry}</td>
-                          <td className="centerTd">{item.count}</td>
+                <>
+                  {releasesTranslatedByMinistry.length === 0 ? (
+                    <p>There are no translations by ministry.</p>
+                  ) : (
+                    <Table striped className="table-outer-bordered">
+                      <thead>
+                        <tr>
+                          <th>Ministry</th>
+                          <th className="centerTd">Count</th>
                         </tr>
-                      );
-                    })}
-                  </tbody>
-                </Table>
+                      </thead>
+                      <tbody>
+                        {releasesTranslatedByMinistry.map((item, index) => {
+                          return (
+                            <tr key={item.ministry}>
+                              <td>{item.ministry}</td>
+                              <td className="centerTd">{item.count}</td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </Table>
+                  )}
+                </>
               )}
-            </>
-          )}
+            </div>
+          </div>
         </>
       )}
     </>
