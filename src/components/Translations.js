@@ -5,14 +5,6 @@ import Table from "react-bootstrap/Table";
 import { useApi } from "../contexts/ApiProvider";
 
 export default function Translations({ start, end }) {
-<<<<<<< HEAD
-  function getPath(url) {
-    var lastSlashIdx = url.lastIndexOf("/") + 1;
-    return url.substring(lastSlashIdx);
-  }
-
-=======
->>>>>>> b3d2b6a (update ui)
   const [translations, setTranslations] = useState();
   const [monthlyNewsReleaseVolume, setMonthlyNewsReleaseVolume] = useState();
   const [translationsVolumeByMonth, setTranslationsVolumeByMonth] = useState();
