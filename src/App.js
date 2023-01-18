@@ -5,6 +5,7 @@ import Container from "react-bootstrap/Container";
 import ExplorePage from "./pages/ExplorePage";
 import FlashProvider from "./contexts/FlashProvider";
 import Header from "./components/Header";
+import HistoryListPage from "./components/HistoryList";
 import HistoryPage from "./pages/HistoryPage";
 import LoginPage from "./pages/LoginPage";
 import PrivateRoute from "./components/PrivateRoute";
