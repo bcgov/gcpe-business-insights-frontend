@@ -1,15 +1,11 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+
+import OverviewCard from "../components/OverviewCard";
 import Spinner from "react-bootstrap/Spinner";
 import Table from "react-bootstrap/Table";
 import { useApi } from "../contexts/ApiProvider";
-import OverviewCard from '../components/OverviewCard';
 
 export default function Translations({ start, end }) {
-  function getPath(url) {
-    var lastSlashIdx = url.lastIndexOf("/") + 1;
-    return url.substring(lastSlashIdx);
-  }
-
   const [translations, setTranslations] = useState();
   const [monthlyNewsReleaseVolume, setMonthlyNewsReleaseVolume] = useState();
   const [translationsVolumeByMonth, setTranslationsVolumeByMonth] = useState();
@@ -18,7 +14,6 @@ export default function Translations({ start, end }) {
   const [languageCounts, setLanguageCounts] = useState();
   const [monthName, setMonthName] = useState();
   const api = useApi();
-  
 
   useEffect(() => {
     (async () => {
@@ -45,8 +40,13 @@ export default function Translations({ start, end }) {
 
   return (
     <>
-      <OverviewCard cardHeader={'Monthly Overview'} cardTitle={'Published to BC Gov News'} releaseNumber={monthlyNewsReleaseVolume} docNumber={translationsVolumeByMonth} />
-      
+      <OverviewCard
+        cardHeader={"Monthly Overview"}
+        cardTitle={"Published to BC Gov News"}
+        releaseNumber={monthlyNewsReleaseVolume}
+        docNumber={translationsVolumeByMonth}
+      />
+
       {releasesTranslatedByMinistry === undefined ? (
         <Spinner animation="border" />
       ) : (
@@ -57,7 +57,6 @@ export default function Translations({ start, end }) {
                 <p>Could not retrieve languages.</p>
               ) : (
                 <>
-
                   <h4>Translations by Language</h4>
                   {languageCounts.length === 0 ? (
                     <p>There are no language counts.</p>
@@ -153,7 +152,7 @@ export default function Translations({ start, end }) {
                                           target="_blank"
                                           rel="noreferrer"
                                         >
-                                          {getPath(u)}
+                                          {u}
                                         </a>
                                       </li>
                                     ))}
@@ -170,9 +169,6 @@ export default function Translations({ start, end }) {
               )}
             </div>
           </div>
-
-
-
         </>
       )}
     </>
