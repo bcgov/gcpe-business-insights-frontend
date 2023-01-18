@@ -3,7 +3,12 @@ import Spinner from "react-bootstrap/Spinner";
 import Table from "react-bootstrap/Table";
 import { useApi } from "../contexts/ApiProvider";
 
-export default function Translations({start, end}) {
+export default function Translations({ start, end }) {
+  function getPath(url) {
+    var lastSlashIdx = url.lastIndexOf("/") + 1;
+    return url.substring(lastSlashIdx);
+  }
+
   const [translations, setTranslations] = useState();
   const [monthlyNewsReleaseVolume, setMonthlyNewsReleaseVolume] = useState();
   const [translationsVolumeByMonth, setTranslationsVolumeByMonth] = useState();
@@ -15,7 +20,10 @@ export default function Translations({start, end}) {
 
   useEffect(() => {
     (async () => {
-      var url = start && end ? `/posts/translations/custom?startDate=${start}&endDate=${end}` : "/posts/translations";
+      var url =
+        start && end
+          ? `/posts/translations/custom?startDate=${start}&endDate=${end}`
+          : "/posts/translations";
       const response = await api.get(url);
       if (response.ok) {
         const results = await response.body;
@@ -137,21 +145,22 @@ export default function Translations({start, end}) {
                         <tr key={item.key}>
                           <td>{item.key}</td>
                           <td>
-                            <ol>
-                              {item.urls.map((u, i) => (
-                                <li key={i}>
-                                  <p>
+                            <details>
+                              <summary>Details</summary>
+                              <ol>
+                                {item.urls.map((u, i) => (
+                                  <li key={i}>
                                     <a
                                       href={u}
                                       target="_blank"
                                       rel="noreferrer"
                                     >
-                                      {u}
+                                      {getPath(u)}
                                     </a>
-                                  </p>
-                                </li>
-                              ))}
-                            </ol>
+                                  </li>
+                                ))}
+                              </ol>
+                            </details>
                           </td>
                         </tr>
                       );
