@@ -20,12 +20,12 @@ export default function HistoryList() {
 
   return (
     <>
-      <h1>History List</h1>
-      <ul>
+      <h3>History List</h3>
+      <ul className="history-list">
         {dates &&
           dates.map((date, index) => {
             var url = `/history/${date.start}/${date.end}`;
-            return <li key={index}><Link to={url} target="_blank">{date.month} {date.year}</Link></li>;
+            return <li key={index} className="py-2"><Link to={url} target="_blank">{date.month} {date.year}</Link></li>;
           })}
       </ul>
     </>

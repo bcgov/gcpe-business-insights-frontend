@@ -31,13 +31,19 @@ export default function Rollup() {
 
   return (
     <>
-      <div className="mb-3">
-        <h3>Rollup</h3>
-        <p>
-          <strong>{monthlyNewsReleaseVolume}</strong> releases translated
+      
+      <div class="card mb-3 bg-light">
+        <div class="card-header">
+          Rollup
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Overview</h5>
+          <p>
+          <strong>{monthlyNewsReleaseVolume}</strong> releases translated <span class="badge badge-primary">{monthlyNewsReleaseVolume}</span>
           <br />
           <strong>{translationsVolumeByMonth}</strong> documents translated
         </p>
+        </div>
       </div>
       {releasesTranslatedByMinistry === undefined ? (
         <Spinner animation="border" />

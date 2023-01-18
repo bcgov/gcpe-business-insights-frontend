@@ -145,8 +145,18 @@ table thead {
 .secondary-nav li .active {
   text-decoration: underline 2px #38598a;
   text-underline-offset: 0.8em;
+  font-weight: bold;
 }
 
 .table-outer-bordered {
   border: 1px solid #dee2e6;
+}
+
+.badge-primary {
+  background-color:  #38598a;
+  font: #ffffff;
+  font-size: 1em;
+}
+
+.history-list li{
 }
