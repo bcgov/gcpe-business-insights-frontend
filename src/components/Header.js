@@ -6,7 +6,8 @@ import logo from "../logo.png";
 import { useIsAuthenticated } from "@azure/msal-react";
 
 export default function Header() {
-  const isAuthenticated = useIsAuthenticated();
+  //const isAuthenticated = useIsAuthenticated();
+  const isAuthenticated = false;
   const titleDiv = {
     borderLeft: "1px solid #fcba19",
     paddingLeft: "20px",
@@ -17,25 +18,20 @@ export default function Header() {
     <Navbar
       variant="light"
       sticky="top"
-      className="Header nav-bg"
+      className="Header nav-bg navbar-static-top"
       expand="none"
     >
-      <Container>
-        <Navbar.Brand>
-          <img src={logo} className="logo" alt="logo" />
-          <span style={{ ...titleDiv }}>GCPE Business Insights</span>
-        </Navbar.Brand>
-        {isAuthenticated ? <SignOutButton /> : <></>}
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link1</Nav.Link>
-            <Nav.Link href="#link">Link2</Nav.Link>
-            <Nav.Link href="#link">Link3</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
+      <Navbar.Brand>
+        <img src={logo} className="logo" alt="logo" />
+        <span style={{ ...titleDiv }}>GCPE Business Insights</span>
+      </Navbar.Brand>
+      {isAuthenticated ? <SignOutButton /> : <></>}
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav" className="ms-3">
+        <Nav className="justify-content-end flex-grow-1 pe-3">
+          <Nav.Link href="#home">Home</Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
     </Navbar>
   );
 }
