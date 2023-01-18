@@ -1,5 +1,6 @@
 import Nav from "react-bootstrap/Nav";
 import { NavLink } from "react-router-dom";
+import Navbar from "react-bootstrap/Navbar";
 
 export default function SeconaryNav() {
   return (
@@ -9,9 +10,9 @@ export default function SeconaryNav() {
           Translations
         </Nav.Link>
       </li>
-      <li>
-        <Nav.Link as={NavLink} to="/history-list">
-          History List
+      <li className="list-inline-item">
+        <Nav.Link as={NavLink} to="/history/2022-10-01/2022-11-01">
+          History
         </Nav.Link>
       </li>
       <li className="list-inline-item">
