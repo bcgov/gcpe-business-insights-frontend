@@ -153,10 +153,21 @@ table thead {
 }
 
 .badge-primary {
-  background-color:  #38598a;
+  background-color: #38598a;
   font: #ffffff;
   font-size: 1em;
 }
 
-.history-list li{
+.card-header {
+  background-color: #f0f3f6;
+  background-color: #38598a;
+  color: #ffffff;
+}
+
+.card-body {
+  background-color: #f0f3f6;
+}
+.history-list li a {
+  color: #38598a;
+  font-size: 1.2em;
 }
