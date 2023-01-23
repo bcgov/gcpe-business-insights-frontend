@@ -1,9 +1,7 @@
-import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { SignOutButton } from "./SignOutButton";
 import logo from "../logo.png";
-import { useIsAuthenticated } from "@azure/msal-react";
 
 export default function Header() {
   //const isAuthenticated = useIsAuthenticated();
