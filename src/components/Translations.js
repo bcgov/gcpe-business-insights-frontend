@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+import OverviewCard from "../components/OverviewCard";
 import Spinner from "react-bootstrap/Spinner";
 import Table from "react-bootstrap/Table";
 import { useApi } from "../contexts/ApiProvider";
@@ -39,19 +40,13 @@ export default function Translations({ start, end }) {
 
   return (
     <>
-      <div className="mt-1">
-        <h3>Monthly Overview</h3>
-        <p>
-          <strong>Published to BC Gov News</strong>
-        </p>
-        <p>
-          <strong>{monthlyNewsReleaseVolume}</strong> releases translated in{" "}
-          {monthName}
-          <br />
-          <strong>{translationsVolumeByMonth}</strong> documents translated in{" "}
-          {monthName}
-        </p>
-      </div>
+      <OverviewCard
+        cardHeader={"Monthly Overview"}
+        cardTitle={"Published to BC Gov News"}
+        releaseNumber={monthlyNewsReleaseVolume}
+        docNumber={translationsVolumeByMonth}
+      />
+
       {releasesTranslatedByMinistry === undefined ? (
         <Spinner animation="border" />
       ) : (
@@ -62,7 +57,7 @@ export default function Translations({ start, end }) {
                 <p>Could not retrieve languages.</p>
               ) : (
                 <>
-                  <h4 className="mt-2">Translations by Language</h4>
+                  <h4>Translations by Language</h4>
                   {languageCounts.length === 0 ? (
                     <p>There are no language counts.</p>
                   ) : (
@@ -95,7 +90,7 @@ export default function Translations({ start, end }) {
               )}
             </div>
             <div className="flex-item">
-              <h4 className="mt-2">News Releases By Ministry</h4>
+              <h4>News Releases By Ministry</h4>
               {releasesTranslatedByMinistry === null ? (
                 <p>Could not retrieve news releases by ministry.</p>
               ) : (
@@ -130,7 +125,7 @@ export default function Translations({ start, end }) {
                 <p>Could not retrieve news releases.</p>
               ) : (
                 <>
-                  <h4 className="mt-2">Translations by News Release</h4>
+                  <h4>Translations by News Release</h4>
                   {translations.length === 0 ? (
                     <p>There are no translations.</p>
                   ) : (
@@ -147,10 +142,11 @@ export default function Translations({ start, end }) {
                             <tr key={item.key}>
                               <td>{item.key}</td>
                               <td>
-                                <ol>
-                                  {item.urls.map((u, i) => (
-                                    <li key={i}>
-                                      <p>
+                                <details>
+                                  <summary>Details</summary>
+                                  <ol>
+                                    {item.urls.map((u, i) => (
+                                      <li key={i}>
                                         <a
                                           href={u}
                                           target="_blank"
@@ -158,10 +154,10 @@ export default function Translations({ start, end }) {
                                         >
                                           {u}
                                         </a>
-                                      </p>
-                                    </li>
-                                  ))}
-                                </ol>
+                                      </li>
+                                    ))}
+                                  </ol>
+                                </details>
                               </td>
                             </tr>
                           );

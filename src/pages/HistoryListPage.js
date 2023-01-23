@@ -3,7 +3,7 @@ import HistoryList from '../components/HistoryList';
 
 export default function HistoryListPage() {
   return (
-    <Body sidebar>
+    <Body seconaryNav>
       <HistoryList />
     </Body>
   );

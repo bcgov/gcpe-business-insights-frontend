@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+import OverviewCard from "./OverviewCard";
 import Spinner from "react-bootstrap/Spinner";
 import Stack from "react-bootstrap/Stack";
 import Table from "react-bootstrap/Table";
@@ -31,14 +32,13 @@ export default function Rollup() {
 
   return (
     <>
-      <div className="mb-3">
-        <h3>Rollup</h3>
-        <p>
-          <strong>{monthlyNewsReleaseVolume}</strong> releases translated
-          <br />
-          <strong>{translationsVolumeByMonth}</strong> documents translated
-        </p>
-      </div>
+      <OverviewCard
+        cardHeader={"Rollup"}
+        cardTitle={"Overview"}
+        releaseNumber={monthlyNewsReleaseVolume}
+        docNumber={translationsVolumeByMonth}
+      />
+
       {releasesTranslatedByMinistry === undefined ? (
         <Spinner animation="border" />
       ) : (
