@@ -9,13 +9,10 @@ export default function SeconaryNav() {
           Translations
         </Nav.Link>
       </li>
-      <li className="list-inline-item">
-        <Nav.Link as={NavLink} to="/history/2022-10-01/2022-11-01">
-        History
-        </Nav.Link>
-      </li>
       <li>
-      <Nav.Link as={NavLink} to="/history-list">History List</Nav.Link>
+        <Nav.Link as={NavLink} to="/history-list">
+          History List
+        </Nav.Link>
       </li>
       <li className="list-inline-item">
         <Nav.Link as={NavLink} to="/rollup">

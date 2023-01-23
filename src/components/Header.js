@@ -28,8 +28,19 @@ export default function Header() {
       {isAuthenticated ? <SignOutButton /> : <></>}
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className="ms-3">
-        <Nav className="justify-content-end flex-grow-1 pe-3">
-          <Nav.Link href="#home">Home</Nav.Link>
+        <Nav className="flex-row flex-grow-1 pe-3">
+          <Nav.Link to="/" end>
+            Home
+          </Nav.Link>
+          <Nav.Link to="/" end>
+            Translations
+          </Nav.Link>
+          <Nav.Link to="/" end>
+            Link 2
+          </Nav.Link>
+          <Nav.Link to="/" end>
+            Link 3
+          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

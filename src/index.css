@@ -171,3 +171,7 @@ table thead {
   color: #38598a;
   font-size: 1.2em;
 }
+
+#basic-navbar-nav .flex-row {
+  gap: 1em;
+}
