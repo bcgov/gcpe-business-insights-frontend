@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
-import Stack from "react-bootstrap/Stack";
+import { useEffect, useState } from "react";
+
+import Body from "../components/Body";
 import Image from "react-bootstrap/Image";
 import Spinner from "react-bootstrap/Spinner";
-import { useParams } from "react-router-dom";
-import Body from "../components/Body";
+import Stack from "react-bootstrap/Stack";
 import { useApi } from "../contexts/ApiProvider";
+import { useParams } from "react-router-dom";
 
 export default function UserPage() {
   const { username } = useParams();
@@ -19,7 +20,7 @@ export default function UserPage() {
   }, [username, api]);
 
   return (
-    <Body sidebar>
+    <Body seconaryNav>
       {user === undefined ? (
         <Spinner animation="border" />
       ) : (
