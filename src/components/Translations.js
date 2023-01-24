@@ -6,6 +6,10 @@ import Table from "react-bootstrap/Table";
 import { useApi } from "../contexts/ApiProvider";
 
 export default function Translations({ start, end }) {
+  function getPath(url) {
+    var lastSlashIdx = url.lastIndexOf("/") + 1;
+    return url.substring(lastSlashIdx);
+  }
   const [translations, setTranslations] = useState();
   const [monthlyNewsReleaseVolume, setMonthlyNewsReleaseVolume] = useState();
   const [translationsVolumeByMonth, setTranslationsVolumeByMonth] = useState();
@@ -152,7 +156,7 @@ export default function Translations({ start, end }) {
                                           target="_blank"
                                           rel="noreferrer"
                                         >
-                                          {u}
+                                          {getPath(u)}
                                         </a>
                                       </li>
                                     ))}
