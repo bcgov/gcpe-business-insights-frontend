@@ -45,7 +45,7 @@ export default function Translations({ start, end }) {
   return (
     <>
       <OverviewCard
-        cardHeader={"Monthly Overview"}
+        cardHeader={"2023 Overview"}
         cardTitle={"Published to BC Gov News"}
         releaseNumber={monthlyNewsReleaseVolume}
         docNumber={translationsVolumeByMonth}
@@ -94,7 +94,7 @@ export default function Translations({ start, end }) {
               )}
             </div>
             <div className="flex-item">
-              <h4>News Releases By Ministry</h4>
+              <h4>Translations By Ministry</h4>
               {releasesTranslatedByMinistry === null ? (
                 <p>Could not retrieve news releases by ministry.</p>
               ) : (

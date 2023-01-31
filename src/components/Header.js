@@ -33,12 +33,6 @@ export default function Header() {
           <Nav.Link to="/" end>
             Translations
           </Nav.Link>
-          <Nav.Link to="/" end>
-            Link 2
-          </Nav.Link>
-          <Nav.Link to="/" end>
-            Link 3
-          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
