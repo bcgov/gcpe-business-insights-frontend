@@ -38,7 +38,7 @@ const OverviewCard = ({ cardHeader, cardTitle, releaseNumber, docNumber }) => {
             {docNumber}
           </span>
           <span style={{ marginLeft: "20px" }}>
-            Documents translated in in {monthNames[new Date().getMonth()]}{" "}
+            Documents translated in {monthNames[new Date().getMonth()]}{" "}
             {new Date().getFullYear()}
           </span>
         </p>
