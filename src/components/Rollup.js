@@ -34,7 +34,7 @@ export default function Rollup() {
     <>
       <OverviewCard
         cardHeader={"Rollup"}
-        cardTitle={"Overview"}
+        cardTitle={"Yearly Overview"}
         releaseNumber={monthlyNewsReleaseVolume}
         docNumber={translationsVolumeByMonth}
       />
@@ -82,7 +82,7 @@ export default function Rollup() {
               )}
             </div>
             <div className="flex-item">
-              <h4>News Releases By Ministry</h4>
+              <h4>Translations By Ministry</h4>
               {releasesTranslatedByMinistry === null ? (
                 <p>Could not retrieve news releases by ministry.</p>
               ) : (

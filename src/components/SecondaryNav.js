@@ -7,12 +7,12 @@ export default function SeconaryNav() {
     <ul className="secondary-nav">
       <li className="list-inline-item">
         <Nav.Link as={NavLink} to="/" end>
-          Translations
+          Current
         </Nav.Link>
       </li>
       <li className="list-inline-item">
         <Nav.Link as={NavLink} to="/history/2022-10-01/2022-11-01">
-          History
+          Historic
         </Nav.Link>
       </li>
       <li className="list-inline-item">
