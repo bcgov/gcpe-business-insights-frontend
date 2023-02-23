@@ -17,6 +17,7 @@ export default function Translations({ start, end }) {
     useState();
   const [languageCounts, setLanguageCounts] = useState();
   const [monthName, setMonthName] = useState();
+  const [year, setYear] = useState();
   const api = useApi();
 
   useEffect(() => {
@@ -34,6 +35,7 @@ export default function Translations({ start, end }) {
         setreleasesTranslatedByMinistry(results.releasesTranslatedByMinistry);
         setLanguageCounts(results.languageCounts);
         setMonthName(results.monthName);
+        setYear(results.year);
       } else {
         setTranslations(null);
         setreleasesTranslatedByMinistry(null);
@@ -49,6 +51,8 @@ export default function Translations({ start, end }) {
         cardTitle={"Published to BC Gov News"}
         releaseNumber={monthlyNewsReleaseVolume}
         docNumber={translationsVolumeByMonth}
+        monthName={monthName}
+        year={year}
       />
 
       {releasesTranslatedByMinistry === undefined ? (

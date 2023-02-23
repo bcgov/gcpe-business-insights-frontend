@@ -1,5 +1,5 @@
 import Body from "../components/Body";
-import HistoryList from '../components/HistoryList';
+import HistoryList from "../components/HistoryList";
 
 export default function HistoryListPage() {
   return (
