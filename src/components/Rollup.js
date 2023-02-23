@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 import OverviewCard from "./OverviewCard";
 import Spinner from "react-bootstrap/Spinner";
-import Stack from "react-bootstrap/Stack";
 import Table from "react-bootstrap/Table";
 import { useApi } from "../contexts/ApiProvider";
 
@@ -12,6 +11,8 @@ export default function Rollup() {
   const [releasesTranslatedByMinistry, setreleasesTranslatedByMinistry] =
     useState();
   const [languageCounts, setLanguageCounts] = useState();
+  const [monthName, setMonthName] = useState();
+  const [year, setYear] = useState();
   const api = useApi();
 
   useEffect(() => {
@@ -23,6 +24,8 @@ export default function Rollup() {
         setTranslationsVolumeByMonth(results.translationsVolumeByMonth);
         setreleasesTranslatedByMinistry(results.releasesTranslatedByMinistry);
         setLanguageCounts(results.languageCounts);
+        setMonthName(results.monthName);
+        setYear(results.year);
       } else {
         setreleasesTranslatedByMinistry(null);
         setLanguageCounts(null);
@@ -37,6 +40,8 @@ export default function Rollup() {
         cardTitle={"Yearly Overview"}
         releaseNumber={monthlyNewsReleaseVolume}
         docNumber={translationsVolumeByMonth}
+        monthName={monthName}
+        year={year}
       />
 
       {releasesTranslatedByMinistry === undefined ? (
