@@ -6,8 +6,10 @@ import Table from "react-bootstrap/Table";
 import { useApi } from "../contexts/ApiProvider";
 
 export default function Rollup() {
+  const [monthsWithPdfCounts, setMonthsWithPdfCounts] = useState();
   const [monthlyNewsReleaseVolume, setMonthlyNewsReleaseVolume] = useState();
   const [translationsVolumeByMonth, setTranslationsVolumeByMonth] = useState();
+  const [ministryTranslationsVolume, setMinistryTranslationsVolume] = useState();
   const [releasesTranslatedByMinistry, setreleasesTranslatedByMinistry] =
     useState();
   const [languageCounts, setLanguageCounts] = useState();
@@ -20,8 +22,10 @@ export default function Rollup() {
       const response = await api.get("/posts/rollup");
       if (response.ok) {
         const results = await response.body;
+        setMonthsWithPdfCounts(results.monthsWithPdfCounts);
         setMonthlyNewsReleaseVolume(results.newsReleaseVolumeByMonth);
         setTranslationsVolumeByMonth(results.translationsVolumeByMonth);
+        setMinistryTranslationsVolume(results.ministryTranslationsVolume);
         setreleasesTranslatedByMinistry(results.releasesTranslatedByMinistry);
         setLanguageCounts(results.languageCounts);
         setMonthName(results.monthName);
@@ -49,6 +53,44 @@ export default function Rollup() {
       ) : (
         <>
           <div className="roll-up-container">
+          <div className="flex-item">
+              {monthsWithPdfCounts === null ? (
+                <p>Could not retrieve months with pdf counts.</p>
+              ) : (
+                <>
+                  {monthsWithPdfCounts.length === 0 ? (
+                    <p>There are no months with pdf counts.</p>
+                  ) : (
+                    <Table striped className="table-outer-bordered">
+                      <thead>
+                        <tr>
+                          <th>
+                            Month
+                          </th>
+                          {monthsWithPdfCounts.map((item, index) => {
+                          return (
+                            <th key={item.month}>
+                              <td>{item.month}</td>
+                            </th>
+                          );
+                        })}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Translations</td>
+                          {monthsWithPdfCounts.map((item, index) => {
+                          return (
+                              <td key={item.month} className="centerTd">{item.pdfCount}</td>
+                          );
+                        })}
+                        </tr>
+                      </tbody>
+                    </Table>
+                  )}
+                </>
+              )}
+            </div>
             <div className="flex-item">
               {languageCounts === null ? (
                 <p>Could not retrieve languages.</p>
@@ -111,6 +153,12 @@ export default function Rollup() {
                             </tr>
                           );
                         })}
+                        <tr>
+                          <td></td>
+                          <td className="centerTd">
+                            <strong>Total {ministryTranslationsVolume}</strong>
+                          </td>
+                        </tr>
                       </tbody>
                     </Table>
                   )}

@@ -13,6 +13,7 @@ export default function Translations({ start, end }) {
   const [translations, setTranslations] = useState();
   const [monthlyNewsReleaseVolume, setMonthlyNewsReleaseVolume] = useState();
   const [translationsVolumeByMonth, setTranslationsVolumeByMonth] = useState();
+  const [ministryTranslationsVolume, setMinistryTranslationsVolume] = useState();
   const [releasesTranslatedByMinistry, setreleasesTranslatedByMinistry] =
     useState();
   const [languageCounts, setLanguageCounts] = useState();
@@ -32,6 +33,7 @@ export default function Translations({ start, end }) {
         setTranslations(results.translations);
         setMonthlyNewsReleaseVolume(results.newsReleaseVolumeByMonth);
         setTranslationsVolumeByMonth(results.translationsVolumeByMonth);
+        setMinistryTranslationsVolume(results.ministryTranslationsVolume);
         setreleasesTranslatedByMinistry(results.releasesTranslatedByMinistry);
         setLanguageCounts(results.languageCounts);
         setMonthName(results.monthName);
@@ -122,6 +124,12 @@ export default function Translations({ start, end }) {
                             </tr>
                           );
                         })}
+                        <tr>
+                          <td></td>
+                          <td className="centerTd">
+                            <strong>Total {ministryTranslationsVolume}</strong>
+                          </td>
+                        </tr>
                       </tbody>
                     </Table>
                   )}
@@ -141,6 +149,7 @@ export default function Translations({ start, end }) {
                       <thead>
                         <tr>
                           <th>News Release Key</th>
+                          <th>Headline</th>
                           <th>URL</th>
                         </tr>
                       </thead>
@@ -149,6 +158,7 @@ export default function Translations({ start, end }) {
                           return (
                             <tr key={item.key}>
                               <td>{item.key}</td>
+                              <td>{item.headline}</td>
                               <td>
                                 <details>
                                   <summary>Details</summary>
