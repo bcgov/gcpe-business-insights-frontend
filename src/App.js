@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import ApiProvider from "./contexts/ApiProvider";
 import Container from "react-bootstrap/Container";
@@ -19,7 +19,7 @@ import UserProvider from "./contexts/UserProvider";
 export default function App() {
   return (
     <Container className="App">
-      <BrowserRouter>
+      <HashRouter>
         <FlashProvider>
           <ApiProvider>
             <UserProvider>
@@ -54,7 +54,7 @@ export default function App() {
             </UserProvider>
           </ApiProvider>
         </FlashProvider>
-      </BrowserRouter>
+      </HashRouter>
     </Container>
   );
 }
