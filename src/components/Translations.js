@@ -6,10 +6,54 @@ import Table from "react-bootstrap/Table";
 import { useApi } from "../contexts/ApiProvider";
 
 export default function Translations({ start, end }) {
+  function ToggleableDetails({ title, children, open, onToggle }) {
+    return (
+      <details open={open} onClick={() => onToggle(!open)}>
+        <summary>{title}</summary>
+        {children}
+      </details>
+    );
+  }
+
   function getPath(url) {
     var lastSlashIdx = url.lastIndexOf("/") + 1;
     return url.substring(lastSlashIdx);
   }
+
+  function formatHeadline(releaseType, headline, key) {
+    if(releaseType === 1) {
+      const url = "https://news.gov.bc.ca/releases/" + key;
+      return <a href={url} target="_blank" rel="noreferrer">{headline}</a>;
+    }
+
+    if(releaseType === 3) {
+      const url = "https://news.gov.bc.ca/factsheets/" + key;
+      return <a href={url}  target="_blank" rel="noreferrer">{headline}</a>;
+    }
+
+    if(releaseType === 5) {
+      const url = "https://news.gov.bc.ca/stories/" + key;
+      return <a href={url}  target="_blank" rel="noreferrer">{headline}</a>;
+    }
+
+    return <span>Error: Release type unknown, unable to build url.</span>;
+  }
+
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    const options = { 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric', 
+      hour: 'numeric', 
+      minute: 'numeric',
+      hour12: true,
+    };
+    var localeTime = date.toLocaleTimeString(['en-CA','en-US'], options);
+    localeTime = localeTime.replace(/a\.m\./g, 'AM').replace(/p\.m\./g, 'PM').replace("at", "");
+    return localeTime;
+  }
+
   const [translations, setTranslations] = useState();
   const [monthlyNewsReleaseVolume, setMonthlyNewsReleaseVolume] = useState();
   const [translationsVolumeByMonth, setTranslationsVolumeByMonth] = useState();
@@ -19,6 +63,7 @@ export default function Translations({ start, end }) {
   const [languageCounts, setLanguageCounts] = useState();
   const [monthName, setMonthName] = useState();
   const [year, setYear] = useState();
+  const [allOpen, setAllOpen] = useState(false);
   const api = useApi();
 
   useEffect(() => {
@@ -148,9 +193,10 @@ export default function Translations({ start, end }) {
                     <Table striped className="table-outer-bordered">
                       <thead>
                         <tr>
-                          <th>News Release Key</th>
+                          <th>News Release</th>
+                          <th>Publish Date &amp; Time</th>
                           <th>Headline</th>
-                          <th>URL</th>
+                          <th>URL(s) &nbsp;<button className="btn btn-light btn-sm" onClick={() => setAllOpen(!allOpen)}>{allOpen ? 'Close All' : 'Open All'}</button></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -158,11 +204,16 @@ export default function Translations({ start, end }) {
                           return (
                             <tr key={item.key}>
                               <td>{item.key}</td>
-                              <td>{item.headline}</td>
+                              <td>{formatDate(item.publishDateTime)}</td>
+                              <td>{formatHeadline(item.releaseType, item.headline, item.key)}</td>
                               <td>
-                                <details>
-                                  <summary>Details</summary>
-                                  <ol>
+                              <ToggleableDetails
+                                key={index}
+                                title={"Details"}
+                                open={allOpen}
+                                onToggle={(open) => setAllOpen(open)}
+                                >
+                                <ol>
                                     {item.urls.map((u, i) => (
                                       <li key={i}>
                                         <a
@@ -175,7 +226,7 @@ export default function Translations({ start, end }) {
                                       </li>
                                     ))}
                                   </ol>
-                                </details>
+                              </ToggleableDetails>
                               </td>
                             </tr>
                           );

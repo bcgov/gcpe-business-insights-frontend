@@ -17,16 +17,16 @@ const monthNames = [
 
 const OverviewCard = ({ cardHeader, cardTitle, releaseNumber, docNumber, monthName, year }) => {
   return (
-    <div class="card mb-3 bg-light">
-      <div class="card-header" style={{ fontSize: "1.2em" }}>
+    <div className="card mb-3 bg-light">
+      <div className="card-header" style={{ fontSize: "1.2em" }}>
         {cardHeader}
       </div>
-      <div class="card-body">
-        <h5 class="card-title" style={{ fontWeight: "bold" }}>
+      <div className="card-body">
+        <h5 className="card-title" style={{ fontWeight: "bold" }}>
           {cardTitle}
         </h5>
         <p style={{ lineHeight: "1.8" }}>
-          <span class="badge badge-primary" style={{ minWidth: "50px" }}>
+          <span className="badge badge-primary" style={{ minWidth: "50px" }}>
             {releaseNumber}
           </span>
           <span style={{ marginLeft: "20px" }}>
@@ -34,7 +34,7 @@ const OverviewCard = ({ cardHeader, cardTitle, releaseNumber, docNumber, monthNa
             {year}
           </span>{" "}
           <br />
-          <span class="badge badge-primary" style={{ minWidth: "50px" }}>
+          <span className="badge badge-primary" style={{ minWidth: "50px" }}>
             {docNumber}
           </span>
           <span style={{ marginLeft: "20px" }}>

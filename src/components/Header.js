@@ -27,10 +27,10 @@ export default function Header() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className="ms-3">
         <Nav className="flex-row flex-grow-1 pe-3">
-          <Nav.Link to="/" end>
+          <Nav.Link to="/" end="true">
             Home
           </Nav.Link>
-          <Nav.Link to="/" end>
+          <Nav.Link to="/" end="true">
             Translations
           </Nav.Link>
         </Nav>
