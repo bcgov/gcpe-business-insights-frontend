@@ -94,7 +94,7 @@ export default function Translations({ start, end }) {
   return (
     <>
       <OverviewCard
-        cardHeader={"2023 Overview"}
+        cardHeader={monthName + " " + year}
         cardTitle={"Published to BC Gov News"}
         releaseNumber={monthlyNewsReleaseVolume}
         docNumber={translationsVolumeByMonth}
