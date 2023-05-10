@@ -15,6 +15,20 @@ export default function Translations({ start, end }) {
     );
   }
 
+  const Timestamp = () => {
+    const [timestamp, setTimestamp] = useState(new Date().toString());
+  
+    useEffect(() => {
+      setTimestamp(new Date().toString());
+    }, []);
+  
+    return (
+      <div style={{ textAlign: 'right' }}>
+        Data updated at: {timestamp}
+      </div>
+    );
+  }
+
   function getPath(url) {
     var lastSlashIdx = url.lastIndexOf("/") + 1;
     return url.substring(lastSlashIdx);
@@ -101,7 +115,6 @@ export default function Translations({ start, end }) {
         monthName={monthName}
         year={year}
       />
-
       {releasesTranslatedByMinistry === undefined ? (
         <Spinner animation="border" />
       ) : (
@@ -193,6 +206,7 @@ export default function Translations({ start, end }) {
                     <Table striped className="table-outer-bordered">
                       <thead>
                         <tr>
+                          <th>#</th>
                           <th>News Release</th>
                           <th>Publish Date &amp; Time</th>
                           <th>Headline</th>
@@ -203,6 +217,7 @@ export default function Translations({ start, end }) {
                         {translations.map((item, index) => {
                           return (
                             <tr key={item.key}>
+                              <td>{index + 1}</td>
                               <td>{item.key}</td>
                               <td>{formatDate(item.publishDateTime)}</td>
                               <td>{formatHeadline(item.releaseType, item.headline, item.key)}</td>
@@ -238,6 +253,7 @@ export default function Translations({ start, end }) {
               )}
             </div>
           </div>
+          <Timestamp />
         </>
       )}
     </>
