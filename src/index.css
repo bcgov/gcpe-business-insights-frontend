@@ -1,22 +1,22 @@
 @font-face {
   font-family: "BCSans-Bold";
-  src: local("BCSans-Bold"), url(./fonts/BCSans-Bold.woff) format("woff");
+  src: local("BCSans-Bold"), url(./fonts/BCSans-Bold.woff2) format("woff2");
 }
 
 @font-face {
   font-family: "BCSans-BoldItalic";
   src: local("BCSans-BoldItalic"),
-    url(./fonts/BCSans-BoldItalic.woff) format("woff");
+    url(./fonts/BCSans-BoldItalic.woff2) format("woff2");
 }
 
 @font-face {
   font-family: "BCSans-Italic";
-  src: local("BCSans-Italic"), url(./fonts/BCSans-Italic.woff) format("woff");
+  src: local("BCSans-Italic"), url(./fonts/BCSans-Italic.woff2) format("woff2");
 }
 
 @font-face {
   font-family: "BCSans-Regular";
-  src: local("BCSans-Regular"), url(./fonts/BCSans-Regular.woff) format("woff");
+  src: local("BCSans-Regular"), url(./fonts/BCSans-Regular.woff2) format("woff2");
 }
 
 body {
