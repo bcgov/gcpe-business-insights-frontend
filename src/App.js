@@ -41,10 +41,12 @@ export default function App() {
                     </PrivateRoute>
                   }
                 />
-                <Route path="/" element={<TranslationsPage />} />
-                <Route path="/history/:start/:end" element={<HistoryPage />} />
-                <Route path="/history-list" element={<HistoryListPage />} />
-                <Route path="/rollup" element={<RollupPage />} />
+                <Route path="/" element={<HistoryListPage />} />
+                <Route path="/translations/collections" element={<HistoryListPage />} />
+                {/* <Route path="/" element={<TranslationsPage />} /> */}
+                <Route path="/collection/:start/:end" element={<HistoryPage />} />
+                {/* <Route path="/collections" element={<HistoryListPage />} /> */}
+                {/* <Route path="/rollup" element={<RollupPage />} /> */}
                 <Route path="/explore" element={<ExplorePage />} />
                 <Route path="/user/:username" element={<UserPage />} />
                 <Route path="/login" element={<LoginPage />} />

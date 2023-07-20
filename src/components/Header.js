@@ -24,7 +24,7 @@ export default function Header() {
         <span style={{ ...titleDiv }}>GCPE Business Insights</span>
       </Navbar.Brand>
       {isAuthenticated ? <SignOutButton /> : <></>}
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
       <Navbar.Collapse id="basic-navbar-nav" className="ms-3">
         <Nav className="flex-row flex-grow-1 pe-3">
           <Nav.Link to="/" end="true">

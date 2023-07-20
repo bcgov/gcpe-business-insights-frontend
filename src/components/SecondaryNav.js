@@ -5,20 +5,20 @@ export default function SeconaryNav() {
   return (
     <ul className="secondary-nav">
       <li className="list-inline-item">
-        <Nav.Link as={NavLink} to="/" end>
-          Current
+        <Nav.Link as={NavLink} to="/">
+          Collections
         </Nav.Link>
       </li>
-      <li className="list-inline-item">
-        <Nav.Link as={NavLink} to="/history-list">
-          Historic
+      {/* <li className="list-inline-item">
+        <Nav.Link as={NavLink} to="/collections">
+          Collections
         </Nav.Link>
-      </li>
-      <li className="list-inline-item">
+      </li> */}
+      {/* <li className="list-inline-item">
         <Nav.Link as={NavLink} to="/rollup">
           Rollup
         </Nav.Link>
-      </li>
+      </li> */}
     </ul>
   );
 }

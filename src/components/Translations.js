@@ -16,15 +16,15 @@ export default function Translations({ start, end }) {
   }
 
   const Timestamp = () => {
-    const [timestamp, setTimestamp] = useState(new Date().toString());
+    const [timestamp, setTimestamp] = useState(formatDate(new Date().toString()));
   
     useEffect(() => {
-      setTimestamp(new Date().toString());
+      setTimestamp(formatDate(new Date().toString()));
     }, []);
   
     return (
       <div style={{ textAlign: 'right' }}>
-        Data updated at: {timestamp}
+        Last updated at: {timestamp}
       </div>
     );
   }
@@ -75,8 +75,8 @@ export default function Translations({ start, end }) {
   const [releasesTranslatedByMinistry, setreleasesTranslatedByMinistry] =
     useState();
   const [languageCounts, setLanguageCounts] = useState();
-  const [monthName, setMonthName] = useState();
-  const [year, setYear] = useState();
+  const [monthName, setMonthName] = useState("Loading...");
+  const [year, setYear] = useState("");
   const [allOpen, setAllOpen] = useState(false);
   const api = useApi();
 
@@ -107,6 +107,7 @@ export default function Translations({ start, end }) {
 
   return (
     <>
+      <Timestamp />
       <OverviewCard
         cardHeader={monthName + " " + year}
         cardTitle={"Published to BC Gov News"}
@@ -116,7 +117,9 @@ export default function Translations({ start, end }) {
         year={year}
       />
       {releasesTranslatedByMinistry === undefined ? (
-        <Spinner animation="border" />
+        <div className="text-center">
+          <Spinner animation="border" />
+        </div>
       ) : (
         <>
           <div className="roll-up-container roll-up-container-3-table">
@@ -158,7 +161,7 @@ export default function Translations({ start, end }) {
               )}
             </div>
             <div className="flex-item">
-              <h4>Translations By Ministry</h4>
+              <h4>Translations by Ministry</h4>
               {releasesTranslatedByMinistry === null ? (
                 <p>Could not retrieve news releases by ministry.</p>
               ) : (
@@ -206,7 +209,6 @@ export default function Translations({ start, end }) {
                     <Table striped className="table-outer-bordered">
                       <thead>
                         <tr>
-                          <th>#</th>
                           <th>News Release</th>
                           <th>Publish Date &amp; Time</th>
                           <th>Headline</th>
@@ -217,7 +219,6 @@ export default function Translations({ start, end }) {
                         {translations.map((item, index) => {
                           return (
                             <tr key={item.key}>
-                              <td>{index + 1}</td>
                               <td>{item.key}</td>
                               <td>{formatDate(item.publishDateTime)}</td>
                               <td>{formatHeadline(item.releaseType, item.headline, item.key)}</td>
@@ -253,7 +254,6 @@ export default function Translations({ start, end }) {
               )}
             </div>
           </div>
-          <Timestamp />
         </>
       )}
     </>
