@@ -5,7 +5,8 @@ const BASE_API_URL = process.env.REACT_APP_BASE_API_URL;
 
 export default class BusinessInsightsApiClient {
   constructor() {
-    this.base_url = BASE_API_URL + "/api";
+    //this.base_url = BASE_API_URL + "/api";
+    this.base_url = "/api";
   }
 
   async request(options) {
@@ -35,7 +36,7 @@ export default class BusinessInsightsApiClient {
         method: options.method,
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer " + accessToken,
+          //Authorization: "Bearer " + accessToken,
           ...options.headers,
         },
         body: options.body ? JSON.stringify(options.body) : null,
