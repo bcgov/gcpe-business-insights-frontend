@@ -35,18 +35,22 @@ export default function Translations({ start, end }) {
   }
 
   function formatHeadline(releaseType, headline, key) {
+    var newsHostUri = "https://news.gov.bc.ca";
+    if(env === "Development") newsHostUri = "https://dev.news.gov.bc.ca";
+    if(env === "Testing") newsHostUri = "https://test.news.gov.bc.ca";
+
     if(releaseType === 1) {
-      const url = "https://news.gov.bc.ca/releases/" + key;
+      const url = newsHostUri + "/releases/" + key;
       return <a href={url} target="_blank" rel="noreferrer">{headline}</a>;
     }
 
     if(releaseType === 3) {
-      const url = "https://news.gov.bc.ca/factsheets/" + key;
+      const url = newsHostUri + "/factsheets/" + key;
       return <a href={url}  target="_blank" rel="noreferrer">{headline}</a>;
     }
 
     if(releaseType === 5) {
-      const url = "https://news.gov.bc.ca/stories/" + key;
+      const url = newsHostUri + "/stories/" + key;
       return <a href={url}  target="_blank" rel="noreferrer">{headline}</a>;
     }
 
@@ -68,6 +72,7 @@ export default function Translations({ start, end }) {
     return localeTime;
   }
 
+  const [env, setEnv] = useState();
   const [translations, setTranslations] = useState();
   const [monthlyNewsReleaseVolume, setMonthlyNewsReleaseVolume] = useState();
   const [translationsVolumeByMonth, setTranslationsVolumeByMonth] = useState();
@@ -97,6 +102,7 @@ export default function Translations({ start, end }) {
         setLanguageCounts(results.languageCounts);
         setMonthName(results.monthName);
         setYear(results.year);
+        setEnv(results.environmentName);
       } else {
         setTranslations(null);
         setreleasesTranslatedByMinistry(null);
