@@ -1,7 +1,7 @@
 import { PublicClientApplication } from "@azure/msal-browser";
 import { msalConfig } from "./authConfig";
 
-const BASE_API_URL = process.env.REACT_APP_BASE_API_URL;
+const BASE_API_URL = import.meta.env.VITE_API_URL;
 
 export default class BusinessInsightsApiClient {
   constructor() {
