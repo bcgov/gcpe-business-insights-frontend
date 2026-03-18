@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import OverviewCard from "../components/OverviewCard";
+import OverviewCard from "./OverviewCard";
 import Spinner from "react-bootstrap/Spinner";
 import Table from "react-bootstrap/Table";
 import { useApi } from "../contexts/ApiProvider";
